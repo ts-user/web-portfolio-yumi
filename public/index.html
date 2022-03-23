@@ -26,16 +26,16 @@
     <div class="page-cover bg-3 text-dark">
       <h1 class="page-title text-1">Portfolio</h1>
 
-      <div class="card-cover bg-white">
+      <!-- <div class="card-cover bg-white">
         <h2 class="card-title-cover bg-2 text-light">
           <div class="card-title">English Title</div>
           <div class="card-subtitle">日本語タイトル</div>
           <div class="card-title-line"></div>
         </h2>
         <div class="card-contents">内容</div>
-      </div>
+      </div> -->
 
-      <div style="height: 20px"></div>
+      <!-- <div style="height: 20px"></div> -->
 
       <div class="card-cover bg-white">
         <h2 class="card-title-cover bg-2 text-light">
@@ -89,7 +89,19 @@
 
       <div style="height: 20px"></div>
 
-      <div class="card-cover bg-white">
+      <div class="app-bar">
+        <div class="app-bar-title">MENU</div>
+        <div class="app-bar-button-cover">
+          <button onclick="scroller('#hobby')">趣味</button>
+          <button onclick="scroller('#skill')">スキル</button>
+          <button onclick="scroller('#mywork')">制作物</button>
+          <button onclick="scroller('#licence')">帰属</button>
+        </div>
+      </div>
+
+      <div style="height: 20px"></div>
+
+      <div class="card-cover bg-white" id="hobby">
         <h2 class="card-title-cover bg-2 text-light">
           <div class="card-title">Hobby</div>
           <div class="card-subtitle">趣味</div>
@@ -144,7 +156,7 @@
 
       <div style="height: 20px"></div>
 
-      <div class="card-cover bg-white">
+      <div class="card-cover bg-white" id="skill">
         <h2 class="card-title-cover bg-2 text-light">
           <div class="card-title">Skill</div>
           <div class="card-subtitle">スキル</div>
@@ -296,7 +308,7 @@
 
       <div style="height: 20px"></div>
 
-      <div class="card-cover bg-white">
+      <div class="card-cover bg-white" id="mywork">
         <h2 class="card-title-cover bg-2 text-light">
           <div class="card-title">My Work</div>
           <div class="card-subtitle">制作物</div>
@@ -469,6 +481,48 @@
         </div>
       </div>
 
+      <div style="height: 20px"></div>
+
+      <div class="card-cover bg-white" id="licence">
+        <h2 class="card-title-cover bg-2 text-light">
+          <div class="card-title">Licence</div>
+          <div class="card-subtitle">帰属</div>
+          <div class="card-title-line"></div>
+        </h2>
+        <div class="card-contents">
+          <ul>
+            <li>
+              <span>
+                HTML5 Logo by
+                <a href="https://www.w3.org/"
+                  ><abbr title="World Wide Web Consortium">W3C</abbr></a
+                > </span
+              >.
+            </li>
+            <li>
+              <span>
+                Node.js<sup>&reg;</sup> Logo by
+                <a href="https://nodejs.org/">OpenJS Foundation</a> </span
+              >.
+            </li>
+            <li>
+              <span>
+                PHP Logo by
+                <a href="https://www.php.net/credits.php">PHP Group</a> </span
+              >.
+            </li>
+            <li>
+              <span>
+                写真AC
+                <a href="https://www.photo-ac.com/main/genface">
+                  AI人物素材（ベータ版）
+                </a> </span
+              >.
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div style="height: 40px"></div>
 
       <footer class="footer-cover bg-2 text-light">
@@ -490,6 +544,24 @@
           prevEl: ".swiper-button-prev",
         },
       });
+
+      var TOP_BAR_OFFSET = 48;
+      function scroller(query) {
+        var elements = document.querySelectorAll(query);
+        if (elements.length == 0) {
+          console.error(
+            "Selected query:",
+            query,
+            "are not found on this page."
+          );
+          return;
+        }
+        var rect = elements[0].getBoundingClientRect();
+        window.scrollTo({
+          top: rect.top + window.pageYOffset - TOP_BAR_OFFSET,
+          behavior: "smooth",
+        });
+      }
     </script>
   </body>
 </html>
